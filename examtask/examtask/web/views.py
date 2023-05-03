@@ -138,7 +138,7 @@ def edit_profile(request):
         if form.is_valid():
             form.save()
             return redirect("catalogue create")
-    #     единствената ми грешка че съм редиректната тук, а не към details profile
+    #    wrong redirect - valid is details_profile
     context = {
         "form": form,
         "profile": profile,
