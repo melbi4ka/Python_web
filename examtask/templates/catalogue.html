@@ -1,0 +1,64 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block page_content %}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{##}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <link rel="stylesheet" href="{% static 'style/style.css' %}">#}
+{#    <title>CarCollection</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<div id="box">#}
+{#    <header>#}
+{#        <!-- Navigation Bar -->#}
+{#        <h1><a class="index-navigation" href="#"><span>C</span>ARS <span>C</span>OLLECTION</a></h1>#}
+{#        <nav>#}
+{#            <a href="#">Catalogue</a>#}
+{#            <a href="#">Create Car</a>#}
+{#            <a href="#">Profile</a>#}
+{#            to do ahrefs#}
+{#        </nav>#}
+{#    </header>#}
+
+    <!-- Display paragraph: If there are no cars yet-->
+    {% if not cars %}
+        <p class="no-articles">No cars yet</p>
+    {% else %}
+
+        <!-- Display div "car" with information about every car (if any)-->
+
+        <section id="catalogue">
+            <h1>Total cars: {{ len_cars }}</h1>
+
+                <!-- first car-->
+            {% for car in cars %}
+                <div class="car-card">
+                    <div class="image-wrap">
+                        <!-- car image -->
+                        <img src="{{ car.image_url }}"
+                             alt="{{ car.type }}">
+                    </div>
+                    <!-- car type -->
+                    <h3>{{  car.type }}</h3>
+                    <!-- car model -->
+                    <h1>{{  car.model }}</h1>
+                    <div class="details-buttons">
+                        <!-- car details button -->
+                        <a href="{% url 'car details' car.pk %}" class="details-btn">Details</a>
+{#                        todo ahrefs#}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+
+
+        </section>
+
+    <!-- footer -->
+{% endblock %}
+
